@@ -2,22 +2,44 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --mode client && vite build",
-    "preview": "wrangler dev server-build/index.js",
-    "deploy": "$npm_execpath run build && wrangler deploy server-build/index.js"
+    "build": "vite build --mode client --outDir dist && vite build --outDir dist/server",
+    "preview": "wrangler dev dist/server/index.js",
+    "deploy": "$npm_execpath run build && wrangler pages deploy dist",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
+    "storybook:serve": "npx http-server storybook-static -p 6006"
   },
   "dependencies": {
     "hono": "^4.6.9",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.1.0"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.3",
     "@cloudflare/workers-types": "^4.20241106.0",
     "@hono/vite-build": "^1.1.0",
     "@hono/vite-dev-server": "^0.16.0",
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/addon-interactions": "^8.4.7",
+    "@storybook/addon-onboarding": "^8.4.7",
+    "@storybook/blocks": "^8.4.7",
+    "@storybook/builder-vite": "^8.4.7",
+    "@storybook/react": "^8.4.7",
+    "@storybook/react-vite": "^8.4.7",
+    "@storybook/test": "^8.4.7",
     "@types/react": "^18.2.60",
     "@types/react-dom": "^18.2.19",
+    "msw": "^2.7.0",
+    "msw-storybook-addon": "^2.0.4",
+    "prop-types": "^15.8.1",
+    "storybook": "^8.4.7",
     "vite": "^5.4.10",
     "wrangler": "^3.86.0"
+  },
+  "msw": {
+    "workerDirectory": [
+      "src/mocks/public"
+    ]
   }
 }
