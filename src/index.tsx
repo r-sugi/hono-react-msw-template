@@ -35,7 +35,7 @@ const routes = app
 						/>
 						{import.meta.env.PROD ? (
 							// biome-ignore lint/style/useSelfClosingElements: <explanation>
-							<script type="module" src="/static/client/main.js"></script>
+							<script type="module" src="/static/client.js"></script>
 						) : (
 							// biome-ignore lint/style/useSelfClosingElements: <explanation>
 							<script type="module" src="/src/client/main.tsx"></script>

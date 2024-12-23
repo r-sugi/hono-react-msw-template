@@ -1,7 +1,6 @@
 name = "hono-spa-react-msw"
 compatibility_date = "2024-09-19"
-# assets = { directory = "./dist/", not_found_handling = "none" }
-pages_build_output_dir = "dist"
+assets = { directory = "./dist/", not_found_handling = "none" }
 
 [vars]
 MY_VAR = "hello"
